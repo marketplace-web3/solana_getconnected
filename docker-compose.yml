@@ -3,4 +3,28 @@ services:
   getconnected:
     build:
       context: getconnected/
-      dockerfile: Dockerfile
+  balance:
+    build:
+      context: balance/
+    environment:
+      WALLET_ADDRESS: ${WALLET_ADDRESS}
+  airdrop:
+    build:
+      context: airdrop/
+    environment:
+      WALLET_ADDRESS: ${WALLET_ADDRESS}
+  account:
+    build:
+      context: account/
+    environment:
+      WALLET_ADDRESS: ${WALLET_ADDRESS}
+  tokenaccount:
+    build:
+      context: tokenaccount/
+    environment:
+      WALLET_ADDRESS: ${WALLET_ADDRESS}
+  mint:
+    build:
+      context: mint/
+    environment:
+      WALLET_ADDRESS: ${WALLET_ADDRESS}

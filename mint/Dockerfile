@@ -1,7 +1,7 @@
 ARG VERSION=latest
 FROM jac18281828/tsdev:${VERSION}
 
-ARG PROJECT=get_connected
+ARG PROJECT=mint
 WORKDIR /workspaces/${PROJECT}
 
 COPY package.json .

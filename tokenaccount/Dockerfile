@@ -1,7 +1,7 @@
 ARG VERSION=latest
 FROM jac18281828/tsdev:${VERSION}
 
-ARG PROJECT=get_connected
+ARG PROJECT=tokenaccount
 WORKDIR /workspaces/${PROJECT}
 
 COPY package.json .
@@ -18,3 +18,4 @@ RUN npm run eslint
 RUN npm run build
 
 CMD npm start
+
