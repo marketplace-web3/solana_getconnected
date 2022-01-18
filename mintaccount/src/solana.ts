@@ -22,31 +22,34 @@ export class Solana {
     this.connection = new Connection(apiUrl, 'confirmed');
   }
 
-  async createTokenAccount(ownerKeyPair: Keypair, mintPubKey: PublicKey) {
+  async createMint(ownerKeyPair: Keypair) {
 
-    const tokenAccount = Keypair.generate()
-    console.log(`token account: ${tokenAccount.publicKey.toBase58()}`)
+    const mint = Keypair.generate()
+    
 
-    const rentExemptBalance = await SPLToken.Token.getMinBalanceRentForExemptAccount(this.connection)
+    console.log(`mint public key: ${mint.publicKey.toBase58()}`)
+
+    const rentExemptBalance = await SPLToken.Token.getMinBalanceRentForExemptMint(this.connection)
     console.log(`rent exempt mint balance: ${rentExemptBalance}`)
 
-    const tokenActTx = new Transaction().add(
+    const mintActTx = new Transaction().add(
       SystemProgram.createAccount({
         fromPubkey: ownerKeyPair.publicKey,
-        newAccountPubkey: tokenAccount.publicKey,
-        space: SPLToken.AccountLayout.span,
+        newAccountPubkey: mint.publicKey,
+        space: SPLToken.MintLayout.span,
         lamports: rentExemptBalance,
         programId: TOKEN_PROGRAM_ID
       }),
       // init mint
-      SPLToken.Token.createInitAccountInstruction(
+      SPLToken.Token.createInitMintInstruction(
         TOKEN_PROGRAM_ID,
-        mintPubKey,
-        tokenAccount.publicKey, // new account
-        ownerKeyPair.publicKey, // owner authority
+        mint.publicKey,
+        8,
+        ownerKeyPair.publicKey, // mint authority
+        ownerKeyPair.publicKey // freeze authority
       )
     )
-    const txhash = await this.connection.sendTransaction(tokenActTx, [ownerKeyPair, tokenAccount])
+    const txhash = await this.connection.sendTransaction(mintActTx, [ownerKeyPair, mint])
     console.log(`Transaction: ${txhash}`)
   }
 }

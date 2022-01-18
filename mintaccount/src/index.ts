@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv'
 import { Solana } from './solana'
-import { PublicKey, PublicKeyInitData, Keypair } from '@solana/web3.js'
+import { Keypair } from '@solana/web3.js'
 
 dotenv.config();
 
@@ -11,7 +11,6 @@ function values_toUint8Array(value: string) {
 
 (async () => {
   const ownerKey: string | undefined = process.env.PRIVATE_KEY
-  const mintAddress: string | undefined = process.env.MINT_KEY
   const netName: string | undefined = process.env.NETWORK
 
   if(!ownerKey || !netName) {
@@ -22,12 +21,10 @@ function values_toUint8Array(value: string) {
   const ownerKeyPair = Keypair.fromSecretKey(numArry)
   console.log(`address: ${ownerKeyPair.publicKey.toBase58.toString()}`)
 
-  const mintPubKey = new PublicKey(mintAddress as PublicKeyInitData)
-
   const sol = new Solana(netName ? netName : 'devnet')
 
   sol.connect()
   
-  sol.createTokenAccount(ownerKeyPair, mintPubKey)
+  sol.createMint(ownerKeyPair)
   
 })()

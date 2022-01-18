@@ -1,7 +1,7 @@
 {
-  "name": "solana_web3_tokenaccount",
+  "name": "solana_web3_mintaccount",
   "version": "0.0.1",
-  "description": "create a token account",
+  "description": "create a mint account",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",

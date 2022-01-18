@@ -18,11 +18,17 @@ services:
       context: account/
     environment:
       WALLET_ADDRESS: ${WALLET_ADDRESS}
+  mintaccount:
+    build:
+      context: mintaccount/
+    environment:
+      PRIVATE_KEY: ${PRIVATE_KEY}
   tokenaccount:
     build:
       context: tokenaccount/
     environment:
-      WALLET_ADDRESS: ${WALLET_ADDRESS}
+      MINT_KEY: ${MINT_ACCOUNT}
+      PRIVATE_KEY: ${PRIVATE_KEY}
   mint:
     build:
       context: mint/
