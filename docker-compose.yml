@@ -29,8 +29,8 @@ services:
     environment:
       MINT_KEY: ${MINT_ACCOUNT}
       PRIVATE_KEY: ${PRIVATE_KEY}
-  mint:
+  mintnft:
     build:
-      context: mint/
+      context: mintnft/
     environment:
-      WALLET_ADDRESS: ${WALLET_ADDRESS}
+      PRIVATE_KEY: ${PRIVATE_KEY}

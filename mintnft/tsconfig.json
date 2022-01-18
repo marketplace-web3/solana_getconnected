@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "lib": ["esnext"],
+    "lib": ["esnext", "dom"],
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "./dist",
     "esModuleInterop": true,
     "allowJs": true,
     "resolveJsonModule": false,
+    "noImplicitAny": false,
     "sourceMap": true,
     "strict": true
   },

@@ -17,6 +17,14 @@ function values_toUint8Array(value: string) {
     throw new Error('please visit .env for environment configuration')
   }
 
+  const tokenName: string | undefined = process.env.TOKEN_NAME
+  const tokenSym: string | undefined = process.env.TOKEN_SYM  
+  const tokenUri: string | undefined = process.env.IMAGE_URI
+
+  if(!tokenName || !tokenSym || !tokenUri) {
+    throw new Error('please configure token properties in .env')
+  }
+
   const numArry = values_toUint8Array(ownerKey)
   const ownerKeyPair = Keypair.fromSecretKey(numArry)
   console.log(`address: ${ownerKeyPair.publicKey.toBase58()}`)
@@ -25,6 +33,6 @@ function values_toUint8Array(value: string) {
 
   sol.connect()
   
-  sol.createMint(ownerKeyPair)
+  sol.mint(ownerKeyPair, {name: tokenName, symbol: tokenSym, uri: tokenUri})
   
 })()
