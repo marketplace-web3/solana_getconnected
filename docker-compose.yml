@@ -34,3 +34,8 @@ services:
       context: mintnft/
     environment:
       PRIVATE_KEY: ${PRIVATE_KEY}
+  listtoken:
+    build:
+      context: listtoken/
+    environment:
+      WALLET_ADDRESS: ${WALLET_ADDRESS}
