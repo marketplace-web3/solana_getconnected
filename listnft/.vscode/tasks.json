@@ -1,0 +1,42 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "npm i",
+      "type": "shell",
+      "command": "npm i --save-dev",
+      "group": "build"
+    },
+    {
+      "label": "tsc",
+      "type": "shell",
+      "command": "npm run build",
+      "dependsOn": "npm i",
+      "group": "build"
+    },
+    {
+        "label": "lint",
+        "type": "shell",
+        "dependsOn": "tsc",
+        "command": "npm run eslint",
+        "problemMatcher": [],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        }
+    },
+    {
+        "label": "test",
+        "type": "shell",
+        "dependsOn": "lint",
+        "command": "npm run test",
+        "problemMatcher": [],
+        "group": {
+            "kind": "test",
+            "isDefault": true
+        }
+    }
+  ]
+}

@@ -39,3 +39,8 @@ services:
       context: listtoken/
     environment:
       WALLET_ADDRESS: ${WALLET_ADDRESS}
+  listnft:
+    build:
+      context: listnft/
+    environment:
+      WALLET_ADDRESS: ${WALLET_ADDRESS}
