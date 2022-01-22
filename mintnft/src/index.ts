@@ -19,7 +19,7 @@ function values_toUint8Array(value: string) {
 
   const tokenName: string | undefined = process.env.TOKEN_NAME
   const tokenSym: string | undefined = process.env.TOKEN_SYM  
-  const tokenUri: string | undefined = process.env.IMAGE_URI
+  const tokenUri: string | undefined = process.env.METADATA_URI
 
   if(!tokenName || !tokenSym || !tokenUri) {
     throw new Error('please configure token properties in .env')
