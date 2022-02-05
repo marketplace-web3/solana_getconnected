@@ -46,7 +46,15 @@ export class Solana {
         try {
           const metadataPDA = await Metadata.getPDA(new PublicKey(mintKey))
           const tokenMeta = await Metadata.load(this.connection, metadataPDA)
-          console.log(tokenMeta)
+          const metadataData = tokenMeta.data
+          console.log(`must be verified: ${metadataData.collection?.verified}`)
+          console.log(`must not be mutable: ${!metadataData.isMutable}`)
+          const metadatadatadata = metadataData.data
+          console.log(`name: ${metadatadatadata.name}`)
+          console.log(`creators: ${metadatadatadata.creators}`)
+          console.log(`external uri: ${metadatadatadata.uri}`)
+          console.log(`symbol: ${metadatadatadata.symbol}`)
+          console.log(`seller fee bps: ${metadatadatadata.sellerFeeBasisPoints}`)
         } catch(error) {
           console.log(`unexpected error ${mintKey}: ${error}`)
         }
