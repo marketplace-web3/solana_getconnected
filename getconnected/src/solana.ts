@@ -1,15 +1,15 @@
-import * as web3 from '@solana/web3.js'
+import * as web3 from '@solana/web3.js';
 
 export class Solana {
-  network: string
-  connection: web3.Connection = {} as web3.Connection
+  network: string;
+  connection: web3.Connection = {} as web3.Connection;
 
   constructor(network: string) {
-    this.network = network
+    this.network = network;
   }
 
   connect(): void {
-    const apiUrl = web3.clusterApiUrl(this.network as web3.Cluster)
+    const apiUrl = web3.clusterApiUrl(this.network as web3.Cluster);
     this.connection = new web3.Connection(apiUrl, 'confirmed');
   }
 
@@ -25,6 +25,5 @@ export class Solana {
 
     const slotLeader = await this.connection.getSlotLeader();
     console.log(slotLeader);
-
   }
 }
