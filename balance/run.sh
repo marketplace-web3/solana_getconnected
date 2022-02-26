@@ -7,4 +7,5 @@ PROJECT_NAME=$(basename ${PWD})
 PROJECT=${ACCOUNT_NAME}/${PROJECT_NAME}
 
 docker build . -t ${PROJECT}:${VERSION} && \
-	docker run --rm -i -t ${PROJECT}:${VERSION}
+	docker run --rm -i -t ${PROJECT}:${VERSION} &&
+	docker rmi ${PROJECT}:${VERSION}
