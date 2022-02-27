@@ -8,39 +8,47 @@ services:
       context: balance/
     environment:
       WALLET_ADDRESS: ${WALLET_ADDRESS}
+      NETWORK: ${NETWORK}
   airdrop:
     build:
       context: airdrop/
     environment:
       WALLET_ADDRESS: ${WALLET_ADDRESS}
+      NETWORK: ${NETWORK}      
   account:
     build:
       context: account/
     environment:
       WALLET_ADDRESS: ${WALLET_ADDRESS}
+      NETWORK: ${NETWORK}      
   mintaccount:
     build:
       context: mintaccount/
     environment:
       PRIVATE_KEY: ${PRIVATE_KEY}
+      NETWORK: ${NETWORK}      
   tokenaccount:
     build:
       context: tokenaccount/
     environment:
       MINT_KEY: ${MINT_ACCOUNT}
       PRIVATE_KEY: ${PRIVATE_KEY}
+      NETWORK: ${NETWORK}      
   mintnft:
     build:
       context: mintnft/
     environment:
       PRIVATE_KEY: ${PRIVATE_KEY}
+      NETWORK: ${NETWORK}      
   listtoken:
     build:
       context: listtoken/
     environment:
       WALLET_ADDRESS: ${WALLET_ADDRESS}
+      NETWORK: ${NETWORK}      
   listnft:
     build:
       context: listnft/
     environment:
       WALLET_ADDRESS: ${WALLET_ADDRESS}
+      NETWORK: ${NETWORK}      

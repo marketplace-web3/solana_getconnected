@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-import { Solana } from './solana';
+import { NftToken } from './metaplex';
 import { PublicKey, PublicKeyInitData } from '@solana/web3.js';
 
 dotenv.config();
@@ -14,9 +14,9 @@ dotenv.config();
 
   const walletPubKey = new PublicKey(walletAddress as PublicKeyInitData);
 
-  const sol = new Solana(netName ? netName : 'devnet');
+  const nftToken = new NftToken(netName ? netName : 'devnet');
 
-  sol.connect();
+  nftToken.connect();
 
-  sol.queryTokenMint(walletPubKey);
+  nftToken.queryTokenMint(walletPubKey);
 })();

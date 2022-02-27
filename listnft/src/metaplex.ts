@@ -3,7 +3,7 @@ import { Metadata } from '@metaplex-foundation/mpl-token-metadata';
 
 export const TOKEN_PROGRAM_ID: PublicKey = new PublicKey('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA');
 
-export class Solana {
+export class NftToken {
   network: string;
   connection: Connection = {} as Connection;
 
