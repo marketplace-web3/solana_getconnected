@@ -15,7 +15,7 @@ function values_toUint8Array(value: string) {
   const vaultAddress: string | undefined = process.env.VAULT;
   const resourceAddress: string | undefined = process.env.RESOURCE;
 
-  if (!ownerKey || !netName ||  !vaultAddress || !resourceAddress) {
+  if (!ownerKey || !netName || !vaultAddress || !resourceAddress) {
     throw new Error('please visit .env for environment configuration');
   }
 
