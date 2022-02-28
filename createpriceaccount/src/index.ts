@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-import { Solana } from './solana';
+import { Auction } from './metaplex';
 import { Keypair } from '@solana/web3.js';
 
 dotenv.config();
@@ -21,7 +21,7 @@ function values_toUint8Array(value: string) {
   const ownerKeyPair = Keypair.fromSecretKey(numArry);
   console.log(`owner public key: ${ownerKeyPair.publicKey.toBase58()}`);
 
-  const sol = new Solana(netName ? netName : 'devnet');
+  const sol = new Auction(netName ? netName : 'devnet');
 
   sol.connect();
 

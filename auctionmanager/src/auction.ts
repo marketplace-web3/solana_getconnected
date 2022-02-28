@@ -20,7 +20,7 @@ export class Metaplex {
   }
 
   /// @throws (Error)
-  async createAuctionManager(ownerKeyPair: Keypair, storeAddress: PublicKey, vaultAddress: PublicKey) {
+  async createAuctionManager(ownerKeyPair: Keypair, vaultAddress: PublicKey) {
     if (this.connection) {
 
       const FEE_PAYER = ownerKeyPair.publicKey;

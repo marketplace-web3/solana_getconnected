@@ -2,7 +2,7 @@ import { Connection, Keypair, Cluster, clusterApiUrl } from '@solana/web3.js';
 import * as metaplex from '@metaplex/js';
 import { NodeWallet } from '@metaplex/js';
 
-export class Solana {
+export class Auction {
   network: string;
   connection: Connection = {} as Connection;
 
@@ -25,7 +25,7 @@ export class Solana {
       try {
         const externalPriceAccount = await metaplex.actions.createExternalPriceAccount({ connection: this.connection, wallet: nodeWallet });
 
-        console.log(`external price account created: ${externalPriceAccount.txId}, string public key ${externalPriceAccount.externalPriceAccount.toBase58()}, txId: ${externalPriceAccount.txId}`);
+        console.log(`external price account created: ${externalPriceAccount.txId}, string public key ${externalPriceAccount.externalPriceAccount.toBase58()}`);
       } catch (error) {
         console.log(`Error creating price account: ${error}`);
       }

@@ -52,3 +52,16 @@ services:
     environment:
       WALLET_ADDRESS: ${WALLET_ADDRESS}
       NETWORK: ${NETWORK}      
+  createpriceaccount:
+    build:
+      context: createpriceaccount/
+    environment:
+      PRIVATE_KEY: ${PRIVATE_KEY}
+      NETWORK: ${NETWORK}      
+  createvault:
+    build:
+      context: createvault/
+    environment:
+      PRIVATE_KEY: ${PRIVATE_KEY}
+      PRICEACCOUNT: ${PRICEACCOUNT}
+      NETWORK: ${NETWORK}      

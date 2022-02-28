@@ -14,9 +14,9 @@ RUN npm i --save-dev
 
 COPY --chown=jac:jac . .
 
-#RUN npm run prettier:check
-#RUN npm run eslint
-#RUN npm run build
+RUN npm run prettier:check
+RUN npm run eslint
+RUN npm run build
 
 CMD npm start
 

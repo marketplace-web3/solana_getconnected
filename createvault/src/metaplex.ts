@@ -3,7 +3,7 @@ import * as metaplex from '@metaplex/js';
 import { NodeWallet } from '@metaplex/js';
 import { NATIVE_MINT } from '@solana/spl-token';
 
-export class Solana {
+export class Auction {
   network: string;
   connection: Connection = {} as Connection;
 

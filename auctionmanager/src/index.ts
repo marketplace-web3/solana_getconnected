@@ -12,10 +12,9 @@ function values_toUint8Array(value: string) {
 (async () => {
   const ownerKey: string | undefined = process.env.PRIVATE_KEY;
   const netName: string | undefined = process.env.NETWORK;
-  const storeAddress: string | undefined = process.env.STORE;
-  const auctionAddress: string | undefined = process.env.AUCTION;
+  const vaultAddress: string | undefined = process.env.VAULT;
 
-  if (!ownerKey || !netName || !storeAddress || !auctionAddress) {
+  if (!ownerKey || !netName || !vaultAddress ) {
     throw new Error('please visit .env for environment configuration');
   }
 
@@ -23,12 +22,10 @@ function values_toUint8Array(value: string) {
   const ownerKeyPair = Keypair.fromSecretKey(numArry);
   console.log(`address: ${ownerKeyPair.publicKey.toBase58()}`);
 
-  const store = new PublicKey(storeAddress as PublicKeyInitData);
-  const auction = new PublicKey(auctionAddress as PublicKeyInitData);
-
+  const vault = new PublicKey(vaultAddress as PublicKeyInitData);
   const metaplex = new Metaplex(netName ? netName : 'devnet');
 
   metaplex.connect();
 
-  metaplex.createAuctionManager(ownerKeyPair, store, auction);
+  metaplex.createAuctionManager(ownerKeyPair, vault);
 })();
