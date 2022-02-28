@@ -1,6 +1,8 @@
-# Get Connected on Solana
+# Get Connected on Solana or Metaplex
 
 Get Connected on Solana with simple examples that actually work!
+
+Full working examples for working with Tokens, Auctions, NFTs, Metadata and more
 
 ### QuickStart
 
