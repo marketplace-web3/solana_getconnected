@@ -15,7 +15,7 @@ function values_toUint8Array(value: string) {
   const storeAddress: string | undefined = process.env.STORE;
   const auctionAddress: string | undefined = process.env.AUCTION;
 
-  if (!ownerKey || !netName ||  !storeAddress || !auctionAddress) {
+  if (!ownerKey || !netName || !storeAddress || !auctionAddress) {
     throw new Error('please visit .env for environment configuration');
   }
 
