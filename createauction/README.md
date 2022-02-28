@@ -1,1 +1,1 @@
-# create metaplex auction
+# create metaplex contract auction manager

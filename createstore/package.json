@@ -1,7 +1,7 @@
 {
-  "name": "solana_web3_auctionmanager",
+  "name": "solana_web3_createstore",
   "version": "0.0.1",
-  "description": "create auction manager",
+  "description": "create a store",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",

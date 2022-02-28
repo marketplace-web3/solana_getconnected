@@ -1,7 +1,7 @@
 ARG VERSION=latest
 FROM jac18281828/tsdev:${VERSION}
 
-ARG PROJECT=auctionmanager
+ARG PROJECT=createstore
 WORKDIR /workspaces/${PROJECT}
 RUN chown -R jac.jac .
 
