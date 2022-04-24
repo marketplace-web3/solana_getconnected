@@ -28,7 +28,7 @@ function values_toUint8Array(value: string) {
 
   const metaplex = new Metaplex(netName ? netName : 'devnet');
 
-  metaplex.connect();
+  await metaplex.connect();
 
-  metaplex.createAuction(ownerKeyPair, vault, '100', resource);
+  await metaplex.createAuction(ownerKeyPair, vault, '100', resource);
 })();

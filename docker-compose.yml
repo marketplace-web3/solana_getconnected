@@ -65,3 +65,11 @@ services:
       PRIVATE_KEY: ${PRIVATE_KEY}
       PRICEACCOUNT: ${PRICEACCOUNT}
       NETWORK: ${NETWORK}      
+  transferata:
+    build:
+      context: transferata/
+    environment:
+      PRIVATE_KEY: ${PRIVATE_KEY}
+      TOKEN_ACCOUNT: ${TOKEN_ACCOUNT}
+      MINT_ACCOUNT: ${MINT_ACCOUNT}
+      NETWORK: ${NETWORK}      

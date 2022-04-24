@@ -20,19 +20,29 @@ export class Solana {
   /// @throws (Error)
   async queryTokenAccount(walletAddress: PublicKey) {
     if (this.connection) {
-      const programList = [TOKEN_PROGRAM_ID];
-      await programList.forEach(async programId => {
-        console.log(`For program: ${programId}`);
-        await this.connection.getTokenAccountsByOwner(walletAddress, { programId: programId }).then(async accountList => {
-          await accountList.value.forEach(async account => {
-            await this.connection.getParsedAccountInfo(account.pubkey).then(accountInfo => {
-              console.log(`Account Public Key: ${account.pubkey}`);
-              console.log(accountInfo);
-              console.log(accountInfo.value?.data);
-            });
-          });
-        });
+      console.log(`For wallet: ${walletAddress.toBase58()}`);
+      const accountList = await this.connection.getParsedProgramAccounts(TOKEN_PROGRAM_ID, {
+        filters: [
+          {
+            dataSize: 165,
+          },
+          {
+            memcmp: {
+              offset: 32,
+              bytes: walletAddress.toBase58(),
+            },
+          },
+        ],
       });
+      for (const account of accountList) {
+        const accountData = account.account.data as { [key: string]: any };
+        const tokenInfo = accountData['parsed']['info'];
+        const ownerWallet = tokenInfo.owner;
+        const tokenMint = tokenInfo['mint'];
+        console.log(`owner wallet: ${ownerWallet}`);
+        console.log(`token account: ${account.pubkey}`);
+        console.log(`mint: ${tokenMint}`);
+      }
     } else {
       throw new Error('Not connected');
     }

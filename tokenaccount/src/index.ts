@@ -26,7 +26,7 @@ function values_toUint8Array(value: string) {
 
   const sol = new Solana(netName ? netName : 'devnet');
 
-  sol.connect();
+  await sol.connect();
 
-  sol.createTokenAccount(ownerKeyPair, mintPubKey);
+  await sol.createTokenAccount(ownerKeyPair, mintPubKey);
 })();

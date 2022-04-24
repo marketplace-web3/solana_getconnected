@@ -25,7 +25,7 @@ function values_toUint8Array(value: string) {
   const vault = new PublicKey(vaultAddress as PublicKeyInitData);
   const metaplex = new Metaplex(netName ? netName : 'devnet');
 
-  metaplex.connect();
+  await metaplex.connect();
 
-  metaplex.createAuctionManager(ownerKeyPair, vault);
+  await metaplex.createAuctionManager(ownerKeyPair, vault);
 })();

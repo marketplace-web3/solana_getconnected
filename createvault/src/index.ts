@@ -26,7 +26,7 @@ function values_toUint8Array(value: string) {
 
   const sol = new Auction(netName ? netName : 'devnet');
 
-  sol.connect();
+  await sol.connect();
 
   await sol.createVault(ownerKeyPair, externalPriceAccount);
 })();

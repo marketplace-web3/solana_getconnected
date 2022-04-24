@@ -18,7 +18,7 @@ dotenv.config();
 
   const sol = new Solana(netName ? netName : 'devnet');
 
-  sol.connect();
+  await sol.connect();
 
   const balance = await sol.getBalance(publicKeyBase58);
 

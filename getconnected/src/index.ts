@@ -11,7 +11,8 @@ dotenv.config();
   }
 
   const sol = new Solana(netName ? netName : 'devnet');
-  sol.connect();
+
+  await sol.connect();
 
   await sol.getSome();
 })();

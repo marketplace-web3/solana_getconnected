@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-import { Metaplex } from './store';
+import { Solana } from './solana';
 import { Keypair } from '@solana/web3.js';
 
 dotenv.config();
@@ -9,10 +9,9 @@ function values_toUint8Array(value: string) {
   return Uint8Array.from(numArry);
 }
 
-(async () => {
+const run = async () => {
   const ownerKey: string | undefined = process.env.PRIVATE_KEY;
   const netName: string | undefined = process.env.NETWORK;
-  const settingsUri: string | undefined = process.env.SETTINGS_URI;
 
   if (!ownerKey || !netName) {
     throw new Error('please visit .env for environment configuration');
@@ -22,9 +21,13 @@ function values_toUint8Array(value: string) {
   const ownerKeyPair = Keypair.fromSecretKey(numArry);
   console.log(`address: ${ownerKeyPair.publicKey.toBase58()}`);
 
-  const metaplex = new Metaplex(netName ? netName : 'devnet');
+  const sol = new Solana(netName ? netName : 'devnet');
 
-  await metaplex.connect();
+  await sol.connect();
 
-  await metaplex.createStore(ownerKeyPair, settingsUri);
-})();
+  await sol.transferToAta(ownerKeyPair);
+};
+
+run()
+  .then(() => console.log('done'))
+  .catch(error => console.error(error));

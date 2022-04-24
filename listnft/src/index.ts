@@ -16,7 +16,7 @@ dotenv.config();
 
   const nftToken = new NftToken(netName ? netName : 'devnet');
 
-  nftToken.connect();
+  await nftToken.connect();
 
-  nftToken.queryTokenMint(walletPubKey);
+  await nftToken.queryTokenMint(walletPubKey);
 })();
