@@ -1,18 +1,13 @@
 name: Docker Image CI
-
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
-
+    branches: [main]
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker project
-      run: docker-compose build
+      - uses: actions/checkout@v2
+      - name: Build the Docker project
+        run: docker-compose build

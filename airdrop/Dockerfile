@@ -1,17 +1,16 @@
-ARG VERSION=latest
-FROM jac18281828/tsdev:${VERSION}
+FROM jac18281828/tsdev:latest
 
 ARG PROJECT=airdrop
 WORKDIR /workspaces/${PROJECT}
-RUN chown -R jac.jac .
+RUN chown -R tsdev:tsdev .
 
-COPY --chown=jac:jac package.json .
-COPY --chown=jac:jac package-lock.json .
+COPY --chown=tsdev:tsdev package.json .
+COPY --chown=tsdev:tsdev package-lock.json .
 
 RUN npm i --save-dev
 
-USER jac
-COPY --chown=jac:jac . .
+USER tsdev
+COPY --chown=tsdev:tsdev . .
 
 RUN npm run prettier:check
 RUN npm run eslint
